@@ -3,7 +3,13 @@
 
 int impotOxo(int age, char sexe)
 {
-    
+    int imposable;
+    if(sexe == 'M' && age >= 20 || sexe == 'F' && 18 < age && age < 35)
+        imposable = 1;
+    else
+        imposable = 0;
+
+        return imposable;
 }
 
 int main()
