@@ -20,8 +20,9 @@ int main()
 
     printf("Saisir un age\n");
     scanf("%d",&age);
+    fflush(stdin);
     printf("Saisir un sexe (M,F,...)\n");
-    scanf("%s",&sexe);
+    scanf("%c",&sexe);
 
     if(impotOxo(age,sexe) == 1)
         printf("Imposable\n");
