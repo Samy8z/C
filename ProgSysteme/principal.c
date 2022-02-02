@@ -12,7 +12,7 @@ int main(void)
  float valeur=0,chiffre;
  int i;  
 
- printf("Nombre de valeurs : %d\n",NBREVALEUR);
+ printf("Nombre de valeurs : %d\n", NBREVALEUR);
 
  for(i=0;i<NBREVALEUR;i++) 
  { 
