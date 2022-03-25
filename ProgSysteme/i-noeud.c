@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include <grp.h>
-#include <pwd.h>
+#include "grp.h"
+#include "pwd.h"
 #include <time.h>
 #include <unistd.h>
 int main(int argn, char *argv[])
