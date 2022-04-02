@@ -10,9 +10,16 @@
                 "UNICODE",
                 "_UNICODE"
             ],
+<<<<<<< HEAD
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x64"
+=======
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x64"
+>>>>>>> fcc745b95c332dc98961c448472acd257ce142c4
         }
     ],
     "version": 4

@@ -1,0 +1,86 @@
+/* TD6.c*/
+#include<stdio.h>
+#include<stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+
+
+float* LectureFichier(char* nomFic){
+    int desc;
+    float *T = (float*)malloc(150*sizeof(float));
+    // Ouverture de fichier en lecture seule
+    if((desc = open(nomFic, O_RDONLY)) == -1){
+        perror("TD6:open");
+        return NULL;
+}
+
+read(desc, T, 150 * sizeof(float));
+
+close(desc);
+return T;
+}
+
+
+
+
+
+
+
+void CalculMoyenneMaxMin(float *T, int debut, int fin, float *moy, float *max, float *min){
+    float somme = T[debut];
+    *max = T[debut];
+    *min = T[debut];
+    for(int i = debut+1; i < fin; i++){
+    somme = somme + T[i];
+    if(T[i] > *max)
+    *max = T[i];
+    if(T[i] < *min)
+    *min = T[i];
+    }
+*moy = somme / (fin - debut);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void AffichageResultats(char* espece, float moySepalLength, float maxSepalLength, float minSepalLength){
+    printf("Espece %s:\n", espece);
+    printf("\tMoyenne : %f\n", moySepalLength);
+    printf("\tMax : %f\n", maxSepalLength);
+    printf("\tMin : %f\n", minSepalLength);
+}
+
+
+int main(int argn, char* argv[]){
+    float *mesures;
+    float moySepalLength, maxSepalLength, minSepalLength;
+
+    if(argn != 2){
+    fprintf(stderr, "TD6:un argument requis\n");
+    exit(1);
+}
+
+    if((mesures = LectureFichier(argv[1])) == NULL)
+exit(2);
+
+CalculMoyenneMaxMin(mesures, 0, 50, &moySepalLength, &maxSepalLength, &minSepalLength);
+AffichageResultats("Iris Setosa", moySepalLength, maxSepalLength, minSepalLength);
+
+CalculMoyenneMaxMin(mesures, 50, 100, &moySepalLength, &maxSepalLength, &minSepalLength);
+AffichageResultats("Iris Versicolour", moySepalLength, maxSepalLength, minSepalLength);
+
+CalculMoyenneMaxMin(mesures, 100, 150, &moySepalLength, &maxSepalLength, &minSepalLength);
+AffichageResultats("Iris Virginica", moySepalLength, maxSepalLength, minSepalLength);
+exit(0);
+}
